@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我爱Alan,Alan爱我</title>
+
+		<style media="screen">
+.but {
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+    background-color: #EEEEEE;
+    border: 2px solid #555555;
+}
+.but:hover {
+    background-color: #DBDBDB;
+}
+			
+			#upload {
+				background-color: #96ffea;
+				width: 500px;
+				height: 500px;
+				margin: 10px 10px 10px 10px;
+				color: black;
+				text-align: center;
+				line-height: 50px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 100% 100%;
+				border: 1px solid #000000;
+			}
+		</style>
+		<script type="text/javascript">
+			function rectClick(event) {
+				t.value = t.value + "[" + event.offsetX / 500 + ", " + (500 - event.offsetY) / 500 + "],\n"
+			}
+
+			function showImg(input) {
+				var file = input.files[0];
+				var url = window.URL.createObjectURL(file)
+				document.getElementById('upload').src = url
+
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div>
+			<img id="upload" src="./heart.jpg" onclick="rectClick(event)" /> ←点图片，记录坐标
+		</div>
+		<textarea id="t" cols="30" rows="6"></textarea>
+		<button type="button" onclick="t.value=''" class="but">清空</button>
+		<input id="upload-input" type="file" accept="image/gif, image/jpg, image/png" onchange="showImg(this)" style="display:none" />
+
+		<label id="lab" for="upload-input" class="but">自选图片</label>（建议先剪裁成没有边缘的正方形图片）
+
+		<div>
+			完成后把坐标复制到target1中,可用以下代码画出来看看
+		</div>
+		<div>
+			import matplotlib.pyplot as plt
+		</div>
+		<div>
+			plt.scatter(target1[:,0], target1[:,1], alpha=0.6)
+		</div>
+		<div>
+			plt.show()
+		</div>
+	</body>
+
+</html>
